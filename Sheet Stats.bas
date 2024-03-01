@@ -74,8 +74,9 @@ Private Sub Worksheet_Change(ByVal Target As Range)
                 counterOk = counterOk + 1
             End If
         Next i
-        brokenCars = removeDublicatesFromOneDimArr(brokenCars)
-        okCars = removeDublicatesFromOneDimArr(okCars)
+        
+        If Not brokenCars(1) = Empty Then brokenCars = removeDublicatesFromOneDimArr(brokenCars)
+        If Not okCars(1) = Empty Then okCars = removeDublicatesFromOneDimArr(okCars)
 
         With Sheets("Статистика")
             .Cells(4, 1).Resize(UBound(okCars), 1).Value = Application.Transpose(okCars)
